@@ -78,7 +78,7 @@ spec:
         name: rollout-restart
         kind: Task
       runAfter:
-        - tag-dev
+        - rox-image-check
       params:
         - name: APP_NAME
           value: "$(params.app-name)"
@@ -111,7 +111,8 @@ spec:
         - name: rox_api_token
           value: roxsecrets
         - name: image
-          value: 'image-registry.openshift-image-registry.svc:5000/petclinic-cicd/petclinic'
+          value: 'image-registry.openshift-image-registry.svc:5000/petclinic-cicd/petclinic
+:dev'
       runAfter:
         - tag-dev
       taskRef:
