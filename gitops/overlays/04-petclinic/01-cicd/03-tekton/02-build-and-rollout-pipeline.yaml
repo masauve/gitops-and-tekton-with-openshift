@@ -99,6 +99,11 @@ spec:
         kind: Task
       runAfter:
         - tag-prod
+      params:
+        - name: APP_NAME
+          value: "$(params.app-name)"
+        - name: NAMESPACE
+          value: "petclinic-prod"
     - name: rox-image-check
       params:
         - name: rox_central_endpoint
@@ -112,9 +117,3 @@ spec:
       taskRef:
         kind: ClusterTask
         name: rox-image-check
-
-      params:
-        - name: APP_NAME
-          value: "$(params.app-name)"
-        - name: NAMESPACE
-          value: "petclinic-prod"
