@@ -78,7 +78,7 @@ spec:
         name: rollout-restart
         kind: Task
       runAfter:
-        - rox-image-check
+        - tag-dev
       params:
         - name: APP_NAME
           value: "$(params.app-name)"
