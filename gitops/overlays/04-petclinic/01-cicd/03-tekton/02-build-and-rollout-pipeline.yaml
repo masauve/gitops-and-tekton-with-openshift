@@ -78,7 +78,7 @@ spec:
         name: rollout-restart
         kind: Task
       runAfter:
-        - tag-dev
+        - rox-image-check
       params:
         - name: APP_NAME
           value: "$(params.app-name)"
@@ -99,6 +99,20 @@ spec:
         kind: Task
       runAfter:
         - tag-prod
+    - name: rox-image-check
+      params:
+        - name: rox_central_endpoint
+          value: roxsecrets
+        - name: rox_api_token
+          value: roxsecrets
+        - name: image
+          value: '$(params.app-name):latest $(params.app-name):dev'
+      runAfter:
+        - tag-dev
+      taskRef:
+        kind: ClusterTask
+        name: rox-image-check
+
       params:
         - name: APP_NAME
           value: "$(params.app-name)"
