@@ -111,7 +111,7 @@ spec:
         - name: rox_api_token
           value: roxsecrets
         - name: image
-          value: '$(params.app-name):latest $(params.app-name):dev'
+          value: 'image-registry.openshift-image-registry.svc:5000/petclinic-cicd/petclinic:dev'
       runAfter:
         - tag-dev
       taskRef:
